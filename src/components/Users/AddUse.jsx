@@ -5,7 +5,6 @@ const AddUser = (props) => {
     e.preventDefault();
   };
 
-
   return (
     <form onSubmit={addUserHandler}>
       <label htmlFor="username">UserName</label>
@@ -14,7 +13,7 @@ const AddUser = (props) => {
       <input id="age" type="number"></input>
       <button type="submit">Add User</button>
     </form>
-  )
-}
+  );
+};
 
 export default AddUser;
