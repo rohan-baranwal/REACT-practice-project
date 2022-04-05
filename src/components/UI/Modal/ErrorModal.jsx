@@ -1,12 +1,13 @@
 import React from "react";
+import Wrapper from "../../Helpers/Wrapper";
 import Button from "../Button/Button";
 import Card from "../Card/Card";
 import classes from "./ErrorModal.module.css";
 
 const ErrorModal = (props) => {
   return (
-    <div>
-      <div className={classes.backdrop} onClick={props.onOkayClick} />
+    <Wrapper>
+      <div className={classes.backdrop} onClick={props.onConfirm} />
       <Card className={classes.modal}>
         <header className={classes.header}>
           <h2>{props.title}</h2>
@@ -15,10 +16,10 @@ const ErrorModal = (props) => {
           <p>{props.message}</p>
         </div>
         <footer className={classes.actions}>
-          <Button onClick={props.onOkayClick}>Okay</Button>
+          <Button onClick={props.onConfirm}>Okay</Button>
         </footer>
       </Card>
-    </div>
+    </Wrapper>
   );
 };
 
