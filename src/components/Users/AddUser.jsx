@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Card from "../UI/Card/Card";
 import classes from "./AddUser.module.css";
 import Button from "../UI/Button/Button";
 import ErrorModal from "../UI/Modal/ErrorModal";
 
 const AddUser = (props) => {
-  const [enteredUserName, setEnteredUserName] = useState("");
-  const [enteredUserAge, setEnteredUserAge] = useState("");
+  // const [enteredUserName, setEnteredUserName] = useState("");
+  // const [enteredUserAge, setEnteredUserAge] = useState("");
+  const enteredUserNameRef = useRef();
+  const enteredUserAgeRef = useRef();
 
   const [error, setError] = useState(null);
 
   const addUserHandler = (e) => {
+    const enteredUserAge = enteredUserNameRef.current.value;
+    const enteredUserName = enteredUserAgeRef.current.value
+
     e.preventDefault();
     if (
       enteredUserName.trim().length === 0 ||
@@ -31,16 +36,9 @@ const AddUser = (props) => {
     }
 
     props.onAddUser(enteredUserName, enteredUserAge);
-    setEnteredUserAge("");
-    setEnteredUserName("");
-  };
-
-  const userNameChangeHandler = (e) => {
-    setEnteredUserName(e.target.value);
-  };
-
-  const ageChangeHandler = (e) => {
-    setEnteredUserAge(e.target.value);
+    
+    enteredUserNameRef.current.value='';
+    enteredUserAgeRef.current.value='';
   };
 
   const onOkayClickHandler = () => {
@@ -62,15 +60,13 @@ const AddUser = (props) => {
           <input
             id="username"
             type="text"
-            value={enteredUserName}
-            onChange={userNameChangeHandler}
+            ref={enteredUserNameRef}
           ></input>
           <label htmlFor="age">Age (Years)</label>
           <input
             id="age"
             type="number"
-            value={enteredUserAge}
-            onChange={ageChangeHandler}
+            ref={enteredUserAgeRef}
           ></input>
           <Button type="submit">Add User</Button>
         </form>
