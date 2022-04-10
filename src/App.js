@@ -13,6 +13,8 @@ function App() {
 
   return (
     <Fragment>
+      <div id="backdrop-root"></div>
+      <div id="overlay-root"></div>
       <AddUser onAddUser={addUserHandler}/>
       <UserList users={usersList} />
     </Fragment>
