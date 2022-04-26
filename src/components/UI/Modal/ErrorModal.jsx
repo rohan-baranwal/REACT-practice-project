@@ -7,7 +7,6 @@ import ReactDOM from "react-dom";
 const Backdrop = (props) => {
   return <div className={classes.backdrop} onClick={props.onConfirm} />;
 };
-
 const ModalOverlay = (props) => {
   return (
     <Card className={classes.modal}>
